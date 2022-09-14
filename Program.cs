@@ -1,5 +1,6 @@
 ﻿using System;
 using NLog;
+using CsvHelper;
 
 namespace TP2 {
     class Program {
@@ -8,17 +9,17 @@ namespace TP2 {
             Console.WriteLine("Ingrese la cantidad de alumnos a agregar");
             int cantidad = Convert.ToInt32(Console.ReadLine());
             while (cantidad != 0) {
-                Alumno nuevoAlumno = new Alumno();
                 Console.WriteLine("Nombre: ");
-                nuevoAlumno.Nombre = Console.ReadLine();
+                string Nombre = Console.ReadLine();
                 Console.WriteLine("Apellido: ");
-                nuevoAlumno.Apellido = Console.ReadLine();
+                string Apellido = Console.ReadLine();
                 Console.WriteLine("DNI: ");
-                nuevoAlumno.Dni = Convert.ToInt32(Console.ReadLine());
+                int Dni = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Id: ");
-                nuevoAlumno.Id = Convert.ToInt32(Console.ReadLine());
+                int Id = Convert.ToInt32(Console.ReadLine());
                 Console.WriteLine("Curso (A/V/F): ");
-                nuevoAlumno.Apellido = Console.ReadLine();
+                string Curso = Console.ReadLine();
+                Alumno nuevoAlumno = new(Id, Nombre, Apellido, Dni, Curso);
                 nuevoAlumno.mostrarDatos();
                 cantidad--;
             }

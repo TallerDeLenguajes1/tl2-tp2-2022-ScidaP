@@ -12,6 +12,14 @@ namespace TP2 {
         int dni;
         string curso;
 
+        public Alumno(int id, string nombre, string apellido, int dni, string curso) {
+            Id = id;
+            Nombre = nombre;
+            Apellido = apellido;
+            Dni = dni;
+            Curso = NombreCurso(curso);
+        }
+
         public int Id { get => id; set => id = value; }
         public string Nombre { get => nombre; set => nombre = value; }
         public string Apellido { get => apellido; set => apellido = value; }
@@ -23,10 +31,11 @@ namespace TP2 {
             Console.WriteLine("Apellido: " + this.Apellido);
             Console.WriteLine("DNI: " + this.Dni);
             Console.WriteLine("ID: " + this.Id);
-            Console.WriteLine("Curso: " + NombreCurso(this.curso));
+            Console.WriteLine("Curso: " + this.curso);
+            Console.WriteLine("-----------");
         }
 
-        private static string NombreCurso(string CodigoCurso) {
+        private string NombreCurso(string CodigoCurso) {
             string NombreCompleto;
             switch (CodigoCurso) {
                 case "A":

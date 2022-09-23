@@ -42,10 +42,13 @@ namespace TP2 {
 
         static public void guardarEnCsv(List<Alumno> ListaAlumno) {
             try {
-                var stream = new FileStream("alumnos.csv", FileMode.OpenOrCreate);
-                var writer = new StreamWriter(stream);
-                var csv = new CsvWriter(writer, CultureInfo.InvariantCulture);
-                csv.WriteRecords(ListaAlumno);
+                using (var stream = new FileStream("alumnos.csv", FileMode.OpenOrCreate)) {
+                    using (var writer = new StreamWriter(stream)) {
+                        using (var csv = new CsvWriter(writer, CultureInfo.InvariantCulture)) {
+                            csv.WriteRecords(ListaAlumno);
+                        }
+                    }
+                }
             } catch (Exception e) {
                 logger.Error("Error: " + e.Message);
             }
